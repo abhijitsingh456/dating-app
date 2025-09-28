@@ -14,7 +14,7 @@ jobs:
                 python -m pip install --upgrade pip
                 pip install poetry
                 poetry config virtualenvs.create false
-                poetry install --no-dev
+                poetry install --without=dev
             - name: Run linters
               run: poetry run pre-commit run --all-files
             - name: Run tests
