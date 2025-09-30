@@ -10,7 +10,9 @@ ENV PYTHONUNBUFFERED=1
 RUN apt-get update && apt-get install -y build-essential libpq-dev
 
 #Install poetry
-RUN pip install --upgrade pip && pip install poetry
+RUN pip install --upgrade pip && pip install "poetry>=1.2.0" && pip install poetry-plugin-export
+
+COPY pyproject.toml /app
 
 #Export a requirements.txt without hashes (works for poetry>=1.2)
 RUN poetry export -f requirements.txt --output requirements.txt --without-hashes
